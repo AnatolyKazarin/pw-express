@@ -32,7 +32,7 @@ class AuthController {
     async login(req: Request, res: Response, next: NextFunction) {
         try {
             const {email, password} = req.body
-            const candidate: UserModel = await User.findOne({email})
+            const candidate: UserModel | null = await User.findOne({email})
             if(!candidate) {
                 return next(ApiError.badRequest(`User with ${email} not found`))
             }
