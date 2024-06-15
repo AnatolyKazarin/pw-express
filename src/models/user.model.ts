@@ -1,6 +1,6 @@
 import {Schema, model, ObjectId} from 'mongoose'
 
-type UserModel = {
+export type UserModel = {
     _id: ObjectId
     email: string
     username: string
@@ -8,11 +8,11 @@ type UserModel = {
     balance: number
 }
 
-const User = new Schema<UserModel>({
+const UserSchema = new Schema<UserModel>({
     username: {type: String, unique: true, require: true},
     password: {type: String, require: true},
     email: {type: String, unique: true, require: true},
-    balance: {type: Number, value: 500}
+    balance: {type: Number}
 })
 
-export default model('User', User)
+export default model('User', UserSchema)

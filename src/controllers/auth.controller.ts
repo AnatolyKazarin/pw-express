@@ -1,4 +1,4 @@
-import User from '../models/user.model.ts'
+import User, {UserModel} from '../models/user.model.ts'
 import bcrypt from 'bcryptjs'
 import ApiError from "../utils/error.ts";
 import {generateAccessToken} from "../utils/tokens.ts";
@@ -19,7 +19,7 @@ class AuthController {
                 return next(ApiError.badRequest('A user with that email already exists'))
             }
             const hashedPassword = bcrypt.hashSync(password, 7)
-            const user = new User({username, password: hashedPassword, email})
+            const user = new User({username, password: hashedPassword, email, balance: 500})
             await user.save()
             const token = generateAccessToken(user._id, email)
             return res.json({token})
@@ -32,7 +32,7 @@ class AuthController {
     async login(req: Request, res: Response, next: NextFunction) {
         try {
             const {email, password} = req.body
-            const candidate = await User.findOne({email})
+            const candidate: UserModel = await User.findOne({email})
             if(!candidate) {
                 return next(ApiError.badRequest(`User with ${email} not found`))
             }

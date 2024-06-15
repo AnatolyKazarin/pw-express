@@ -12,6 +12,10 @@ class ApiError extends Error {
         return new ApiError(400, message)
     }
 
+    static unauthorized(message: string) {
+        return new ApiError(401, message)
+    }
+
     static internal(message: string) {
         return new ApiError(500, message)
     }
