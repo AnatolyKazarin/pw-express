@@ -9,6 +9,7 @@
     "dev": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
     "ts:check": "tsc --project tsconfig.json",
     "build": "rimraf dist && tsc",
+    "vercel-build": "echo hello",
     "add-build": "git add dist"
   },
   "pre-commit": [
