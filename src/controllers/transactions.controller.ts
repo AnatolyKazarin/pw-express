@@ -1,7 +1,7 @@
-import User, {UserModel} from '../models/user.model'
-import ApiError from "../utils/error";
+import User, {UserModel} from '../models/user.model.js'
+import ApiError from "../utils/error.js";
 import {NextFunction, Request, Response} from "express";
-import Transaction from "../models/transaction.model";
+import Transaction from "../models/transaction.model.js";
 
 class TransactionsController {
     async getAll(req: Request, res: Response, next: NextFunction) {

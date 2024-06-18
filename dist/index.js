@@ -8,9 +8,9 @@ const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL || '';
 const app = express();
 app.use(express.json());
-app.get("/", (req, res) => res.send("Express on Vercel"));
 app.use('/auth', authRoute);
 app.use('/api', transactionsRoute);
+app.get("/", (req, res) => res.send("Express on Vercel"));
 async function start() {
     try {
         await mongoose.connect(DB_URL);
