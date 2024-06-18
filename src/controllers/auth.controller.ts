@@ -1,7 +1,7 @@
-import User, {UserModel} from '../models/user.model.ts'
+import User, {UserModel} from '../models/user.model'
 import bcrypt from 'bcryptjs'
-import ApiError from "../utils/error.ts";
-import {generateAccessToken} from "../utils/tokens.ts";
+import ApiError from "../utils/error";
+import {generateAccessToken} from "../utils/tokens";
 import {validationResult} from "express-validator";
 import {NextFunction, Request, Response} from "express";
 

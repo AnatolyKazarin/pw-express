@@ -1,7 +1,7 @@
-import User, {UserModel} from '../models/user.model.ts'
-import ApiError from "../utils/error.ts";
+import User, {UserModel} from '../models/user.model'
+import ApiError from "../utils/error";
 import {NextFunction, Request, Response} from "express";
-import Transaction from "../models/transaction.model.ts";
+import Transaction from "../models/transaction.model";
 
 class TransactionsController {
     async getAll(req: Request, res: Response, next: NextFunction) {

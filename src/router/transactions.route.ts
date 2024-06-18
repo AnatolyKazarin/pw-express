@@ -1,7 +1,7 @@
 import {Router} from 'express'
-import AuthController from "../controllers/auth.controller.ts";
-import authMiddleware from "../middlewares/auth.middleware.ts";
-import TransactionsController from "../controllers/transactions.controller.ts";
+import AuthController from "../controllers/auth.controller";
+import authMiddleware from "../middlewares/auth.middleware";
+import TransactionsController from "../controllers/transactions.controller";
 
 const transactionsRoute = Router()
 

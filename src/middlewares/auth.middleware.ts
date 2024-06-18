@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 import jwt, {Secret} from "jsonwebtoken";
-import ApiError from "../utils/error.ts";
+import ApiError from "../utils/error";
 import {NextFunction, Request, Response} from "express";
 
 const secret = process.env.SECRET_KEY as Secret

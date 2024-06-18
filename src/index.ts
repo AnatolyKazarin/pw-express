@@ -1,9 +1,9 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
-import authRoute from "./router/auth.route.ts";
+import authRoute from "./router/auth.route";
 import * as mongoose from "mongoose";
-import transactionsRoute from "./router/transactions.route.ts";
+import transactionsRoute from "./router/transactions.route";
 
 const PORT = process.env.PORT || 5000
 const DB_URL = process.env.DB_URL || ''
