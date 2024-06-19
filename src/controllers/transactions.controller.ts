@@ -1,13 +1,14 @@
 import User, {UserModel} from '../models/user.model.js'
 import ApiError from "../utils/error.js";
 import {NextFunction, Request, Response} from "express";
-import Transaction from "../models/transaction.model.js";
+import Transaction, {TransactionModel} from "../models/transaction.model.js";
 
 class TransactionsController {
     async getAll(req: Request, res: Response, next: NextFunction) {
         try {
             const {userId} = req
-            const transactions = await Transaction.find({senderId: userId})
+            const transactionsData: TransactionModel[] = await Transaction.find({senderId: userId})
+            const transactions = transactionsData.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             return res.json({transactions})
         } catch (e) {
             return next(ApiError.badRequest("Registration error"))

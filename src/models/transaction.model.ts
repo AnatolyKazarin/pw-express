@@ -1,10 +1,10 @@
 import {Schema, model, ObjectId} from 'mongoose'
 
-type TransactionModel = {
+export type TransactionModel = {
     _id: ObjectId
     senderId: string
     recipientId: string
-    date: number
+    date: string
     amount: number
     balance: number
     senderName: string

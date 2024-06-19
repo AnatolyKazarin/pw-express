@@ -4,13 +4,14 @@ import express from 'express';
 import authRoute from "./router/auth.route.js";
 import * as mongoose from "mongoose";
 import transactionsRoute from "./router/transactions.route.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
 const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL || '';
 const app = express();
 app.use(express.json());
 app.use('/auth', authRoute);
 app.use('/api', transactionsRoute);
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.use(errorMiddleware);
 async function start() {
     try {
         await mongoose.connect(DB_URL);
