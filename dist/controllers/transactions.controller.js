@@ -5,7 +5,8 @@ class TransactionsController {
     async getAll(req, res, next) {
         try {
             const { userId } = req;
-            const transactions = await Transaction.find({ senderId: userId });
+            const transactionsData = await Transaction.find({ senderId: userId });
+            const transactions = transactionsData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
             return res.json({ transactions });
         }
         catch (e) {
