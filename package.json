@@ -9,7 +9,8 @@
     "dev": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
     "ts:check": "tsc --project tsconfig.json",
     "build": "rimraf dist && tsc",
-    "add-build": "git add dist"
+    "add-build": "git add dist",
+    "swagger": "node ./dist/utils/swagger.js"
   },
   "pre-commit": [
     "ts:check",
@@ -23,7 +24,8 @@
     "express": "^4.19.2",
     "express-validator": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.1"
+    "mongoose": "^8.4.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -33,9 +35,11 @@
     "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.11.26",
+    "@types/swagger-ui-express": "^4.1.6",
     "nodemon": "^3.1.1",
     "prettier": "^3.3.2",
     "rimraf": "^5.0.7",
+    "swagger-autogen": "^2.23.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },

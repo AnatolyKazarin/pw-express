@@ -6,17 +6,22 @@ import * as mongoose from "mongoose";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import apiRoute from "./router/api/index.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
+import swaggerUi from "swagger-ui-express";
+import output from "./utils/swagger-output.json" assert { type: 'json' };
 const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL || '';
 const app = express();
 app.use(express.json());
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(output));
 app.use('/auth', authRoute);
 app.use('/api', authMiddleware, apiRoute);
 app.use(errorMiddleware);
 async function start() {
     try {
         await mongoose.connect(DB_URL);
-        app.listen(PORT, () => { console.log('Server Started'); });
+        app.listen(PORT, () => {
+            console.log('Server Started');
+        });
     }
     catch (e) {
         console.log(e);
