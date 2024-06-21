@@ -15,7 +15,6 @@ const DB_URL = process.env.DB_URL || ''
 const app = express()
 
 app.use(express.json())
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(output))
 app.use('/auth', authRoute)
 app.use('/api', authMiddleware, apiRoute)
 app.use(errorMiddleware)
@@ -25,6 +24,7 @@ async function start() {
         await mongoose.connect(DB_URL)
         app.listen(PORT , () => {
             console.log('Server Started')
+            app.use('/docs', swaggerUi.serve, swaggerUi.setup(output))
         })
     } catch (e) {
         console.log(e)
