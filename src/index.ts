@@ -6,8 +6,6 @@ import * as mongoose from "mongoose";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import apiRoute from "./router/api/index.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
-import swaggerUi from "swagger-ui-express";
-import output from "./utils/swagger-output.json" assert {type: 'json'};
 
 const PORT = process.env.PORT || 5000
 const DB_URL = process.env.DB_URL || ''
@@ -24,7 +22,7 @@ async function start() {
         await mongoose.connect(DB_URL)
         app.listen(PORT , () => {
             console.log('Server Started')
-            app.use('/docs', swaggerUi.serve, swaggerUi.setup(output))
+            // app.use('/docs', swaggerUi.serve, swaggerUi.setup(output))
         })
     } catch (e) {
         console.log(e)
